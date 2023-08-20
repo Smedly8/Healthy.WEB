@@ -1,0 +1,168 @@
+
+$mediaQuery1: 1200px;
+$mediaQuery2: 800px;
+
+
+:root{
+    --mainColor: #34C759;
+    --hoverBlue: #1ea540;
+    --background: #191919;
+    --lightBlack: #252525;
+    --darkGray: #303030;
+    --gray: #A6A6A6;
+    --lightGray: #D9D9D9;
+    --gold: #FFD86E;
+    --warning: #C22F2F;
+    --goldGradient: linear-gradient(93.19deg, #FFD86E 10.84%, #F0B357 27.5%, #F2CB6C 51.07%, #E6A94D 71.4%, #FFD86E 88.87%);
+
+    --mainFont: 'ArialNova';
+    --mediaQuery1: 1351px;
+    --heightImageWrap: 440px;
+    
+    --heightBetweenWraps: 30px;
+    --marginBottomTitle: 15px;
+    
+    --width: 1108px;
+    --heightHeader: 90px;
+
+
+    --little: 16px;
+    --middle: 20px;
+    --big: 24px;
+
+    --decorTitleBack: 100px;
+    --decorTitleFront: 36px;
+
+    --buttonSize: 18px;
+    --buttonSizeSmall: 10px;
+}
+
+@media screen and (max-width: $mediaQuery1) {
+    *{  
+        --width: 1108px;
+        --maxW: 90vw;
+        --heightImageWrap: 45vw;
+    } 
+}
+@media screen and (max-width: $mediaQuery2) {
+    *{
+        --maxW: 95vw;
+        --heightImageWrap: 45vw;
+        --middle: 16px;
+        --width: 100vw;
+        --heightHeader: 20vw;
+
+        --decorTitleBack: 20vw;
+        --decorTitleFront: 5vw;
+
+        --buttonSize: 4vw;
+        --buttonSizeSmall: 2.5vw;
+    }
+}
+// body{
+//     background: var(--background);
+// }
+
+@mixin baseText($size: var(--middle)){
+    font-family: "Neue";
+    font-size: $size;
+    color: white;
+    line-height: 1.2em;
+    font-weight: 300;
+}
+
+@mixin boldText($size: var(--middle)){
+    font-family: "Neue-bd";
+    font-weight: 700;
+    font-size: $size;
+    letter-spacing: 0.15em;
+    color: white;
+    line-height: 1.2em;
+    font-weight: 300;
+}
+
+
+@mixin grayText($size: 16px){
+    @include baseText($size);
+    color: var(--gray);
+}
+
+@mixin button{
+    width: 100%;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 72px;
+    background: var(--mainColor);
+    @include baseText(var(--buttonSize));
+    color: black;
+    transition: .2s;
+    cursor: pointer;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    &:hover{
+        background-color: var(--hoverBlue);
+    }
+}
+
+@mixin smallButton{
+    @include button;
+    width: 100px;
+    height: 40px;
+    font-size: var(--buttonSizeSmall);
+    border: none;
+}
+
+@mixin banner{
+    height: 25px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    @include boldText(10px);
+    text-transform: uppercase;
+}
+@mixin decorTitle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    & > h2{
+        @include baseText(var(--decorTitleBack));
+        color: var(--darkGray);
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        font-family: "neue-bd";
+        transition: .5s;
+    }
+    & > p{
+        @include baseText(var(--decorTitleFront));
+        letter-spacing: 0.14em;
+        color: var(--lightGray);
+        position: absolute;
+        text-transform: capitalize;
+        transition: .5s;
+        transition-delay: .1s;
+    }
+    & > span {
+        width: 60px;
+        height: 2px;
+        background: var(--mainColor);
+        margin-top: 5px;
+        transition: .5s;
+        transition-delay: .4s;
+    }
+}
+
+
+
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
